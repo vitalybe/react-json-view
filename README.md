@@ -1,3 +1,17 @@
+Fork additions
+==============
+
+New props
+---------
+
+Name|Type|Default|Description
+|:---|:---|:---|:---
+`allowExpand`|`boolean`|true|If set to false, disables all collapsing artifacts.
+`highlights`|`Array<{className: string, paths: string[][]}>`|undefined|If provided, attaches the given `className` to json paths that match one of the paths.
+
+Original README
+===============
+
 ![alt text](https://github.com/mac-s-g/react-json-view/blob/master/doc/rjv-icon-alt.png?raw=true)
 
 [![npm](https://img.shields.io/npm/v/react-json-view.svg)](https://www.npmjs.com/package/react-json-view) [![npm](https://img.shields.io/npm/l/react-json-view.svg)](https://github.com/mac-s-g/react-json-view/blob/master/LISCENSE) [![Build Status](https://travis-ci.org/mac-s-g/react-json-view.svg)](https://travis-ci.org/mac-s-g/react-json-view) [![Coverage Status](https://coveralls.io/repos/github/mac-s-g/react-json-view/badge.svg?branch=master)](https://coveralls.io/github/mac-s-g/react-json-view?branch=master)

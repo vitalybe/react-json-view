@@ -96,28 +96,6 @@ describe("<JsonObject />", function() {
         expect(wrapper.find(".data-type-label")).to.have.length(0)
     })
 
-    it("Array mount expanded", function() {
-        let src = {
-            arr1: [("arr2": ["test"])]
-        }
-        const wrapper = render(
-            <JsonObject
-                src={src}
-                namespace={["arr_test"]}
-                name="test"
-                rjvId={rjvId}
-                theme="rjv-default"
-                indentWidth={1}
-                collapsed={false}
-                depth={1}
-                displayDataTypes={true}
-                type="array"
-            />
-        )
-        expect(wrapper.find(".expanded-icon")).to.have.length(2)
-        expect(wrapper.find(".collapsed-icon")).to.have.length(0)
-    })
-
     it("Array mount collapsed", function() {
         let src = {
             arr1: [("arr2": ["test"])]
@@ -133,6 +111,7 @@ describe("<JsonObject />", function() {
                 indentWidth={1}
                 depth={1}
                 type="array"
+                allowExpand={true}
             />
         )
         expect(wrapper.find(".expanded-icon")).to.have.length(0)
@@ -154,6 +133,7 @@ describe("<JsonObject />", function() {
                 indentWidth={1}
                 depth={1}
                 type="array"
+                allowExpand={true}
             />
         )
         expect(wrapper.find(".expanded-icon")).to.have.length(0)
@@ -176,6 +156,7 @@ describe("<JsonObject />", function() {
                 depth={1}
                 iconStyle="square"
                 type="array"
+                allowExpand={true}
             />
         )
         expect(wrapper.find(".expanded-icon")).to.have.length(0)
@@ -198,6 +179,7 @@ describe("<JsonObject />", function() {
                 depth={1}
                 iconStyle="triangle"
                 type="array"
+                allowExpand={true}
             />
         )
         expect(wrapper.find(".expanded-icon")).to.have.length(0)
