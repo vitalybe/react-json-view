@@ -97,7 +97,7 @@ class RjvObject extends React.PureComponent {
             <div class="pushed-content object-container">
                 <div
                     class="object-content"
-                    {...Theme(this.props.theme, 'pushed-content')}
+                    {...(this.props.allowExpand ? Theme(this.props.theme, 'pushed-content') : undefined)}
                 >
                     {this.renderObjectContents(src, props)}
                 </div>
@@ -150,18 +150,18 @@ class RjvObject extends React.PureComponent {
             <span>
                 <span
                     onClick={e => {
-                        this.toggleCollapsed();
+                        this.props.allowExpand && this.toggleCollapsed();
                     }}
-                    {...Theme(theme, 'brace-row')}
+                    {...Theme(theme, 'brace-row', !this.props.allowExpand ? { cursor: "default" } : undefined)}
                 >
-                    <div
+                    {this.props.allowExpand ? <div
                         class="icon-container"
                         {...Theme(theme, 'icon-container')}
                     >
                         <IconComponent {...{ theme, iconStyle }} />
-                    </div>
+                    </div> : null}
                     <ObjectName {...this.props} />
-                    <span {...Theme(theme, 'brace')}>
+                    <span {...Theme(theme, 'brace', !this.props.allowExpand ? { cursor: "default" } : undefined)}>
                         {object_type === 'array' ? '[' : '{'}
                     </span>
                 </span>
@@ -183,6 +183,7 @@ class RjvObject extends React.PureComponent {
             theme,
             jsvRoot,
             iconStyle,
+            allowExpand,
             ...rest
         } = this.props;
 
@@ -213,7 +214,7 @@ class RjvObject extends React.PureComponent {
                     <span
                         style={{
                             ...Theme(theme, 'brace').style,
-                            paddingLeft: expanded ? '3px' : '0px'
+                            paddingLeft: (allowExpand && expanded) ? '3px' : '0px'
                         }}
                     >
                         {object_type === 'array' ? ']' : '}'}

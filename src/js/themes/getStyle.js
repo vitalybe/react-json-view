@@ -67,16 +67,22 @@ const getDefaultThemeStyling = theme => {
             lineHeight: constants.ellipsisLineHeight,
             cursor: constants.ellipsisCursor
         },
-        'brace-row': {
-            display: 'inline-block',
-            cursor: 'pointer'
-        },
-        brace: {
-            display: 'inline-block',
-            cursor: constants.braceCursor,
-            fontWeight: constants.braceFontWeight,
-            color: colors.braceColor
-        },
+        'brace-row': (component, variable_style) => ({
+            style: {
+                display: 'inline-block',
+                cursor: 'pointer',
+                ...variable_style
+            }
+        }),
+        brace: (component, variable_style) => ({
+            style: {
+                display: 'inline-block',
+                cursor: constants.braceCursor,
+                fontWeight: constants.braceFontWeight,
+                color: colors.braceColor,
+                ...variable_style
+            }
+        }),
         'expanded-icon': {
             color: colors.expandedIcon
         },

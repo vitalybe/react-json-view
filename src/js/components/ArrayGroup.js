@@ -71,7 +71,7 @@ export default class extends React.PureComponent {
                     marginLeft: 6,
                     paddingLeft: array_group_padding_left
                 })} >
-                    <span {...Theme(theme, 'brace-row')}>
+                    <span {...Theme(theme, 'brace-row', {cursor: "default"})}>
 
                         <div class='icon-container' {...Theme(theme, 'icon-container')}
                             onClick={(e) => {this.toggleCollapsed(i);}}>

@@ -22,6 +22,7 @@ ReactDom.render(
             displayDataTypes={false}
             displayObjectSize={false}
             enableClipboard={false}
+            allowExpand={false}
         />
     </div>,
     document.getElementById("app-container")
