@@ -54,6 +54,7 @@ class VariableEditor extends React.PureComponent {
             onEdit,
             onDelete,
             onSelect,
+            highlightClassName,
             rjvId
         } = this.props;
         const { editMode } = this.state;
@@ -61,9 +62,9 @@ class VariableEditor extends React.PureComponent {
         return (
             <div
                 {...Theme(theme, 'objectKeyVal', {
-                    paddingLeft: indentWidth * singleIndent
+                    paddingLeft: indentWidth * singleIndent,
                 })}
-                class="variable-row"
+                className={"variable-row " + (highlightClassName || "")}
                 key={variable.name}
             >
                 {type == 'array' ? (

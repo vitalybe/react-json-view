@@ -1,6 +1,6 @@
 import React from 'react';
 import {polyfill} from 'react-lifecycles-compat';
-import { toType } from './../../helpers/util';
+import { getHighlightClassname, toType } from './../../helpers/util';
 
 //data type components
 import { JsonObject } from './DataTypes';
@@ -184,6 +184,7 @@ class RjvObject extends React.PureComponent {
             jsvRoot,
             iconStyle,
             allowExpand,
+            highlightClassName,
             ...rest
         } = this.props;
 
@@ -199,7 +200,7 @@ class RjvObject extends React.PureComponent {
 
         return (
             <div
-                class="object-key-val"
+                className={"object-key-val " + (highlightClassName || "")}
                 {...Theme(theme, jsvRoot ? 'jsv-root' : 'objectKeyVal', styles)}
             >
                 {this.getBraceStart(object_type, expanded)}
@@ -241,7 +242,9 @@ class RjvObject extends React.PureComponent {
         if (this.props.sortKeys) {
             keys = keys.sort();
         }
+
         keys.forEach(name => {
+            let highlightClassName = getHighlightClassname(this.props.highlights, [...namespace, name]);
             variable = new JsonVariable(name, variables[name]);
 
             if (parent_type === 'array_group' && index_offset) {
@@ -258,6 +261,7 @@ class RjvObject extends React.PureComponent {
                         src={variable.value}
                         namespace={namespace.concat(variable.name)}
                         parent_type={object_type}
+                        highlightClassName={highlightClassName}
                         {...props}
                     />
                 );
@@ -280,6 +284,7 @@ class RjvObject extends React.PureComponent {
                         namespace={namespace.concat(variable.name)}
                         type="array"
                         parent_type={object_type}
+                        highlightClassName={highlightClassName}
                         {...props}
                     />
                 );
@@ -291,6 +296,7 @@ class RjvObject extends React.PureComponent {
                         singleIndent={SINGLE_INDENT}
                         namespace={namespace}
                         type={this.props.type}
+                        highlightClassName={highlightClassName}
                         {...props}
                     />
                 );

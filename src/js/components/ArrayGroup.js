@@ -7,6 +7,7 @@ import ObjectComponent from './DataTypes/Object';
 
 //icons
 import { CollapsedIcon, ExpandedIcon } from './ToggleIcons';
+import { getHighlightClassname } from '../helpers/util';
 
 //single indent is 5px
 const SINGLE_INDENT = 5;
@@ -43,7 +44,7 @@ export default class extends React.PureComponent {
     render() {
         const {
             src, groupArraysAfterLength, depth,
-            name, theme, jsvRoot, namespace, parent_type,
+            name, theme, jsvRoot, namespace, parent_type, highlights,
             ...rest
         } = this.props;
 

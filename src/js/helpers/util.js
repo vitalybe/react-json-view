@@ -53,3 +53,28 @@ export function isTheme(theme) {
     }
     return false;
 }
+
+export function getHighlightClassname(highlights, pathArray) {
+    let highlightClassName = "";
+    try {
+        if (highlights) {
+            let path = pathArray.join(",");
+            for (const highlight of highlights) {
+                try {
+                    for (const highlightPathArray of highlight.paths) {
+                        const highlightPath = highlightPathArray.join(",");
+                        if(highlightPath === path) {
+                            highlightClassName = highlight.className;
+                        }
+                    }
+                } catch (e) {
+                    console.error('failed to process highlight', e);
+                }
+            }
+        }
+    } catch (e) {
+        console.error('failed to process all highlights', e);
+    }
+
+    return highlightClassName;
+}
