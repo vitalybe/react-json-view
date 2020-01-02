@@ -135,6 +135,8 @@ export interface ReactJsonViewProps {
    * Default: null
    */
   defaultValue?: TypeDefaultValue | TypeDefaultValue[] | null;
+  allowExpand?: boolean;
+  highlights?: Array<{ className: string, paths: string[][] }>;
 }
 
 export interface OnCopyProps {
